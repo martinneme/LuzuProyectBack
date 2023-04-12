@@ -2,8 +2,14 @@ import express from 'express';
 import FileManager from './model/productsManager.js'
 
 const app = express();
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000'); // Reemplace con el origen correcto
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+  });
 
-const productsManager = new FileManager('./db/products.txt')
+const productsManager = new FileManager('./db/frases.json')
 
 app.get('/products',async (req,res)=>{
     const limit = parseInt(req.query.limit);
