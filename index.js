@@ -9,7 +9,7 @@ app.use((req, res, next) => {
     next();
   });
 
-const productsManager = new FileManager('./db/frases.json')
+const productsManager = new FileManager('./src/db/frases.json')
 
 app.get('/products',async (req,res)=>{
     const limit = parseInt(req.query.limit);
