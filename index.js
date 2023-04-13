@@ -1,5 +1,5 @@
 import express from 'express';
-import FileManager from './model/productsManager.js'
+import FileManager from './src/model/productsManager.js'
 
 const app = express();
 app.use((req, res, next) => {
