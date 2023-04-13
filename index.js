@@ -32,4 +32,4 @@ app.listen(8080,()=>{
     console.log("Express Server listening on PORT 8080")
 })
 
-module.exports = app;
+export default app;
