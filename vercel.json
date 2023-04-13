@@ -1,13 +1,14 @@
 {
-    "functions": {
-      "index": {
-        "runtime": "node14.x",
-        "memory": 512,
-        "maxDuration": 10
-      }
-    },
-    "routes": [
-      { "src": "/products", "dest": "index" },
-      { "src": "/products/:pid", "dest": "index" }
-    ]
+"version":2,
+"builds":[
+    {
+        "src":"./index.js",
+        "use":"@vercel/node"
+    }
+],
+"routes":[
+    {"src":"/(.*)",
+    "dest":"/products"
+}
+]
   }
