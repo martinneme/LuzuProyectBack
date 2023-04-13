@@ -12,9 +12,14 @@ app.use((req, res, next) => {
 const productsManager = new FileManager('./src/db/frases.json')
 
 app.get('/products',async (req,res)=>{
+  try{
     const limit = parseInt(req.query.limit);
     const products = await productsManager.getsProducts()
     res.send(limit ? products.slice(0,limit) : products)
+  }catch(e){
+    console.log("fallo porque:"+e)
+  }
+    
 })
 
 app.get('/products/:pid',async (req,res)=>{
