@@ -3,7 +3,7 @@ import FileManager from './src/model/productsManager.js'
 
 const app = express();
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000'); // Reemplace con el origen correcto
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000'); 
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
@@ -31,3 +31,5 @@ app.get('/products/:pid',async (req,res)=>{
 app.listen(8080,()=>{
     console.log("Express Server listening on PORT 8080")
 })
+
+module.exports = app;
