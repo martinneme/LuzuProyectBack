@@ -1,13 +1,20 @@
 import express from 'express';
 import FileManager from './src/model/productsManager.js'
+import path from "path"
+
+const port = process.env.PORT || 3000;
 
 const app = express();
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000'); 
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
   });
+
+
+  app.use(express.static(new URL('./public', import.meta.url).pathname));
+const pathee= new URL('./public', import.meta.url).pathname;
+
 
 const productsManager = new FileManager('./src/db/frases.json')
 
@@ -33,7 +40,7 @@ app.get('/products/:pid',async (req,res)=>{
     
 })
 
-app.listen(8080,()=>{
+app.listen(port,()=>{
     console.log("Express Server listening on PORT 8080")
 })
 
