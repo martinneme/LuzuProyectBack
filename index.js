@@ -1,8 +1,13 @@
 import express from 'express';
 import FileManager from './src/model/productsManager.js'
-import path from "path"
+import path from 'path'
+import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const port = process.env.PORT || 3000;
+
+const __dirname = fileURLToPath(import.meta.url);
 
 const app = express();
 app.use((req, res, next) => {
@@ -12,9 +17,9 @@ app.use((req, res, next) => {
   });
 
 
-  app.use(express.static(new URL('./public', import.meta.url).pathname));
-const pathee= new URL('./public', import.meta.url).pathname;
+  app.use(express.static(path.join(__dirname, '../src/public')));
 
+console.log(path.join(__dirname, '../src/public'))
 
 const productsManager = new FileManager('./src/db/frases.json')
 
@@ -41,6 +46,6 @@ app.get('/products/:pid',async (req,res)=>{
 })
 
 app.listen(port,()=>{
-    console.log("Express Server listening on PORT 8080")
+    console.log("Express Server listening on PORT 3000")
 })
 
